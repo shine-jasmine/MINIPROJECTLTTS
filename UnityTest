@@ -1,170 +1,42 @@
-#include <stdio.h>
+#include "head.h"
+//#include "unity_internals.h"
+#include "unity.h"
+
+
+FILE *fp1;
 
 /* Required by the unity test framework */
-void setUp()
-{
-}
+void setUp(){}
 /* Required by the unity test framework */
-void tearDown()
+void tearDown(){}
+
+
+//void test_file(void)
+//{
+    //fopen("customerdetails.txt","r",stdin);//redirects standard input 
+    //fopen("customerdetails.txt","w",stdout);//redirects standard output 
+
+//}
+ 
+
+void file_exist()
 {
+	//TEST_ASSERT_EQUAL(openFile("customerdetails.txt","r", &fp1), SUCCESS);
+	TEST_ASSERT_EQUAL(openFile("customerdetails.txt","r", &fp1), FILE_NOT_FOUND);
 }
 
-void test_zero(void)
-{
-    /* FOR INPUT */
-    a.real = 0;
-    a.imaginary = 0;
-    b.real = 0;
-    b.imaginary = 0;
-    res=sum(a, b);
-    TEST_ASSERT_EQUAL(0, res.real);
-    TEST_ASSERT_EQUAL(0, res.imaginary);
 
-    /* FOR WRITEFILE*/
-    a.real = 0;
-    a.imaginary = 0;
-    b.real = 0;
-    b.imaginary = 0;
-    res=sub(a, b);
-    TEST_ASSERT_EQUAL(0, res.real);
-    TEST_ASSERT_EQUAL(0, res.imaginary);
 
-    /* FOR SEARCH */
-    a.real = 0;
-    a.imaginary = 0;
-    b.real = 0;
-    b.imaginary = 0;
-    res=mul(a, b);
-    TEST_ASSERT_EQUAL(0, res.real);
-    TEST_ASSERT_EQUAL(0, res.imaginary);
-
-    /* FOR OUTPUT */
-    a.real = 0;
-    a.imaginary = 0;
-    b.real = 0;
-    b.imaginary = 0;
-    res=div(a, b);
-    TEST_ASSERT_EQUAL(0, res.real);
-    TEST_ASSERT_EQUAL(0, res.imaginary);
-
-}
-void test_positive(void)
-{
-    /* FOR INPUT */
-    a.real = 25;
-    a.imaginary = 15;
-    b.real = 75;
-    b.imaginary = 95;
-    res=sum(a, b);
-    TEST_ASSERT_EQUAL(100, res.real);
-    TEST_ASSERT_EQUAL(110, res.imaginary);
-
-    /* FOR WRITEFILE */
-    
-    res=sub(a, b);
-    TEST_ASSERT_EQUAL(15, res.real);
-    TEST_ASSERT_EQUAL(10, res.imaginary);
-
-    /* FOR SEARCH */
-    a.real = 2;
-    a.imaginary = 1;
-    b.real = 4;
-    b.imaginary = 3;
-    res=mul(a, b);
-    TEST_ASSERT_EQUAL(5, res.real);
-    TEST_ASSERT_EQUAL(10, res.imaginary);
-
-    /* FOR OUTPUT */
-    a.real = 2;
-    a.imaginary = 1;
-    b.real = 4;
-    b.imaginary = 3;
-    res=div(a, b);
-    TEST_ASSERT_EQUAL(0.4, res.real);
-    TEST_ASSERT_EQUAL(-0.1, res.imaginary);
-}
-
-void test_negative(void)
-{
-    /* FOR INPUT */
-    a.real = -25;
-    a.imaginary = -15;
-    b.real = 75;
-    b.imaginary = 95;
-    res=sum(a, b);
-    TEST_ASSERT_EQUAL(50, res.real);
-    TEST_ASSERT_EQUAL(80, res.imaginary);
-
-    a.real = -25;
-    a.imaginary = -15;
-    b.real = -75;
-    b.imaginary = -95;
-    res=sum(a, b);
-    TEST_ASSERT_EQUAL(-100, res.real);
-    TEST_ASSERT_EQUAL(-110, res.imaginary);
-
-    /* FOR WRITEFILE */
-    a.real = -25;
-    a.imaginary = -15;
-    b.real = 75;
-    b.imaginary = 95;
-    res=sub(a, b);
-    TEST_ASSERT_EQUAL(-100, res.real);
-    TEST_ASSERT_EQUAL(-110, res.imaginary);
-
-    a.real = -25;
-    a.imaginary = -15;
-    b.real = -75;
-    b.imaginary = -95;
-    res=sub(a, b);
-    TEST_ASSERT_EQUAL(50, res.real);
-    TEST_ASSERT_EQUAL(80, res.imaginary);
-
-    /* FOR SEARCH */
-    a.real = -2;
-    a.imaginary = -1;
-    b.real = 4;
-    b.imaginary = 3;
-    res=mul(a, b);
-    TEST_ASSERT_EQUAL(-5, res.real);
-    TEST_ASSERT_EQUAL(-10, res.imaginary);
-
-    a.real = -2;
-    a.imaginary = -1;
-    b.real = -4;
-    b.imaginary = -3;
-    res=mul(a, b);
-    TEST_ASSERT_EQUAL(5, res.real);
-    TEST_ASSERT_EQUAL(10, res.imaginary);
-
-    /* FOR OUTPUT */
-    a.real = -2;
-    a.imaginary = -1;
-    b.real = 4;
-    b.imaginary = 3;
-    res=div(a, b);
-    TEST_ASSERT_EQUAL(-0.4, res.real);
-    TEST_ASSERT_EQUAL(0.1, res.imaginary);
-
-    a.real = -2;
-    a.imaginary = -1;
-    b.real = -4;
-    b.imaginary = -3;
-    res=div(a, b);
-    TEST_ASSERT_EQUAL(0.4, res.real);
-    TEST_ASSERT_EQUAL(-0.1, res.imaginary);
-
-}
 
 int main(void)
 {
     /* Initiate the Unity Test Framework */
     UNITY_BEGIN();
 
+
     /* Run Test functions */
-    RUN_TEST(test_zero);
-    RUN_TEST(test_positive);
-    RUN_TEST(test_negative);
+    RUN_TEST(file_exist);
+
 
     /* Close the Unity Test Framework */
     return UNITY_END();
